@@ -1,0 +1,26 @@
+[
+    {
+        "id": "64677345a031808c",
+        "type": "tab",
+        "label": "Flujo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "510fff59fce86d91",
+        "type": "debug",
+        "z": "64677345a031808c",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 220,
+        "y": 200,
+        "wires": []
+    }
+]
