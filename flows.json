@@ -22,5 +22,34 @@
         "x": 220,
         "y": 200,
         "wires": []
+    },
+    {
+        "id": "f98145e95fbd5ca5",
+        "type": "inject",
+        "z": "64677345a031808c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 470,
+        "y": 200,
+        "wires": [
+            [
+                "510fff59fce86d91"
+            ]
+        ]
     }
 ]
