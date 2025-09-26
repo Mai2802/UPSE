@@ -8,31 +8,81 @@
         "env": []
     },
     {
+        "id": "4b8c527f816f7d99",
+        "type": "mqtt-broker",
+        "name": "Hivemq",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
         "id": "f5a507b9471f4331",
         "type": "mqtt in",
         "z": "64677345a031808c",
         "name": "",
-        "topic": "",
-        "qos": "2",
+        "topic": "Mel",
+        "qos": "0",
         "datatype": "auto-detect",
+        "broker": "4b8c527f816f7d99",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 210,
-        "y": 140,
+        "x": 110,
+        "y": 180,
         "wires": [
             [
-                "7dd97132eebd5514"
+                "c74f4a337a80a8bf",
+                "aa7aa17a69aa6613"
             ]
         ]
     },
     {
-        "id": "7dd97132eebd5514",
+        "id": "c74f4a337a80a8bf",
+        "type": "debug",
+        "z": "64677345a031808c",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "aa7aa17a69aa6613",
         "type": "mqtt out",
         "z": "64677345a031808c",
         "name": "",
-        "topic": "",
+        "topic": "debug",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -40,8 +90,199 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
+        "broker": "4b8c527f816f7d99",
+        "x": 310,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "372f035a61a4f254",
+        "type": "mqtt out",
+        "z": "64677345a031808c",
+        "name": "",
+        "topic": "Mel",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4b8c527f816f7d99",
         "x": 470,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "565e5b82842c6262",
+        "type": "inject",
+        "z": "64677345a031808c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "chau",
+        "payload": "holaaaa",
+        "payloadType": "str",
+        "x": 190,
+        "y": 480,
+        "wires": [
+            [
+                "372f035a61a4f254",
+                "6b33ba06df38895f"
+            ]
+        ]
+    },
+    {
+        "id": "b5b6fd514466e1ca",
+        "type": "inject",
+        "z": "64677345a031808c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "tardes",
+        "payload": "buenas",
+        "payloadType": "str",
+        "x": 190,
+        "y": 540,
+        "wires": [
+            [
+                "372f035a61a4f254",
+                "6b33ba06df38895f"
+            ]
+        ]
+    },
+    {
+        "id": "1d02fa10f8a52a7e",
+        "type": "inject",
+        "z": "64677345a031808c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "hols",
+        "payload": "holiss",
+        "payloadType": "str",
+        "x": 180,
+        "y": 600,
+        "wires": [
+            [
+                "372f035a61a4f254",
+                "6b33ba06df38895f"
+            ]
+        ]
+    },
+    {
+        "id": "9585c97debf51ddc",
+        "type": "debug",
+        "z": "64677345a031808c",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "1344fa8d76c3e5be",
+        "type": "inject",
+        "z": "64677345a031808c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "hola",
+        "payload": "holaa",
+        "payloadType": "str",
+        "x": 520,
+        "y": 140,
+        "wires": [
+            [
+                "9585c97debf51ddc",
+                "d57d26e04e4b34a5"
+            ]
+        ]
+    },
+    {
+        "id": "d57d26e04e4b34a5",
+        "type": "mqtt out",
+        "z": "64677345a031808c",
+        "name": "",
+        "topic": "Mel",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4b8c527f816f7d99",
+        "x": 810,
         "y": 180,
+        "wires": []
+    },
+    {
+        "id": "6b33ba06df38895f",
+        "type": "debug",
+        "z": "64677345a031808c",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 560,
         "wires": []
     }
 ]
