@@ -12,7 +12,7 @@
         "type": "debug",
         "z": "64677345a031808c",
         "name": "debug 1",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -44,8 +44,37 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 350,
+        "x": 250,
         "y": 120,
+        "wires": [
+            [
+                "510fff59fce86d91"
+            ]
+        ]
+    },
+    {
+        "id": "0ad7ad958958bf6e",
+        "type": "inject",
+        "z": "64677345a031808c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 490,
+        "y": 280,
         "wires": [
             [
                 "510fff59fce86d91"
