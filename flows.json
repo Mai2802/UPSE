@@ -175,25 +175,7 @@
         "y": 200,
         "wires": [
             [
-                "88e3bf8652e22306"
-            ]
-        ]
-    },
-    {
-        "id": "88e3bf8652e22306",
-        "type": "json",
-        "z": "b438c48279cc0aba",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 330,
-        "y": 220,
-        "wires": [
-            [
-                "97786b7414dadbb5",
-                "08f76e5cbe5ff11c",
-                "8732163ab332df76"
+                "761fcb3e50e544c0"
             ]
         ]
     },
@@ -204,7 +186,7 @@
         "name": "",
         "group": "821d5dd782874946",
         "order": 2,
-        "value": "payload",
+        "value": "payload.temperatura",
         "valueType": "msg",
         "width": 3,
         "height": 3,
@@ -260,7 +242,7 @@
         "name": "",
         "group": "821d5dd782874946",
         "order": 1,
-        "value": "payload",
+        "value": "payload.humedad",
         "valueType": "msg",
         "width": 3,
         "height": 3,
@@ -302,7 +284,7 @@
         "styleGlow": false,
         "className": "",
         "x": 630,
-        "y": 280,
+        "y": 300,
         "wires": [
             [
                 "24f5f1be922dfb3a"
@@ -372,7 +354,7 @@
         ]
     },
     {
-        "id": "97786b7414dadbb5",
+        "id": "418d4132c64241e1",
         "type": "debug",
         "z": "b438c48279cc0aba",
         "name": "debug 1",
@@ -380,65 +362,29 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 560,
+        "x": 520,
         "y": 220,
         "wires": []
     },
     {
-        "id": "08f76e5cbe5ff11c",
-        "type": "change",
+        "id": "761fcb3e50e544c0",
+        "type": "json",
         "z": "b438c48279cc0aba",
         "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "temperature",
-                "tot": "msg",
-                "dc": true
-            }
-        ],
+        "property": "payload",
         "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 460,
-        "y": 100,
+        "pretty": false,
+        "x": 350,
+        "y": 200,
         "wires": [
             [
-                "bd73d1d99c6b9616"
-            ]
-        ]
-    },
-    {
-        "id": "8732163ab332df76",
-        "type": "change",
-        "z": "b438c48279cc0aba",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "payload.humidity",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 440,
-        "y": 300,
-        "wires": [
-            [
-                "2907de106a2ecc79"
+                "bd73d1d99c6b9616",
+                "2907de106a2ecc79",
+                "418d4132c64241e1"
             ]
         ]
     }
