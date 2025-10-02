@@ -376,7 +376,7 @@
         "type": "debug",
         "z": "b438c48279cc0aba",
         "name": "debug 1",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -397,8 +397,9 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "payload.temperature",
-                "tot": "msg"
+                "to": "\"temperature\"",
+                "tot": "msg",
+                "dc": true
             }
         ],
         "action": "",
