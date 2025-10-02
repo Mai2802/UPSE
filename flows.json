@@ -376,14 +376,14 @@
         "type": "debug",
         "z": "b438c48279cc0aba",
         "name": "debug 1",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 540,
+        "x": 560,
         "y": 220,
         "wires": []
     },
@@ -397,7 +397,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "\"temperature\"",
+                "to": "temperature",
                 "tot": "msg",
                 "dc": true
             }
