@@ -1,1 +1,333 @@
-[]
+[
+    {
+        "id": "b438c48279cc0aba",
+        "type": "tab",
+        "label": "Flujo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4cc2a4c023078c60",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "568bc2b1eb8623e4",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "cf47c37f33447228",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "4cc2a4c023078c60",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "568bc2b1eb8623e4",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "821d5dd782874946",
+        "type": "ui-group",
+        "name": "Group 1",
+        "page": "cf47c37f33447228",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": true,
+        "disabled": false,
+        "groupType": "default"
+    },
+    {
+        "id": "7a50d79278c5b6b8",
+        "type": "mqtt in",
+        "z": "b438c48279cc0aba",
+        "name": "",
+        "topic": "sensors/room1",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "4b8c527f816f7d99",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "88e3bf8652e22306"
+            ]
+        ]
+    },
+    {
+        "id": "88e3bf8652e22306",
+        "type": "json",
+        "z": "b438c48279cc0aba",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 310,
+        "y": 200,
+        "wires": [
+            [
+                "5507758017af3e07",
+                "97786b7414dadbb5"
+            ]
+        ]
+    },
+    {
+        "id": "5507758017af3e07",
+        "type": "function",
+        "z": "b438c48279cc0aba",
+        "name": "function 1",
+        "func": "// Extrae temperatura y humedad del payload\nvar t = null;\nif (msg.payload.temperature !== undefined) t = Number(msg.payload.temperature);\nelse if (msg.payload.temp !== undefined) t = Number(msg.payload.temp);\n\nvar h = null;\nif (msg.payload.humidity !== undefined) h = Number(msg.payload.humidity);\nelse if (msg.payload.hum !== undefined) h = Number(msg.payload.hum);\n\nvar ts = msg.payload.ts || Date.now();\n\n// Mensajes para los dos outputs: salida 1 -> temperatura, salida 2 -> humedad\nvar m1 = { payload: (t === null ? 0 : t), topic: 'temperatura', ts: ts };\nvar m2 = { payload: (h === null ? 0 : h), topic: 'humedad', ts: ts };\n\nreturn [ m1, m2 ];\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 340,
+        "wires": [
+            [
+                "bd73d1d99c6b9616",
+                "2907de106a2ecc79",
+                "24f5f1be922dfb3a"
+            ]
+        ]
+    },
+    {
+        "id": "bd73d1d99c6b9616",
+        "type": "ui-gauge",
+        "z": "b438c48279cc0aba",
+        "name": "",
+        "group": "821d5dd782874946",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "color": "#5CD65C",
+                "from": 0
+            },
+            {
+                "color": "#FFC800",
+                "from": 4
+            },
+            {
+                "color": "#EA5353",
+                "from": 7
+            }
+        ],
+        "min": 0,
+        "max": 10,
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 510,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2907de106a2ecc79",
+        "type": "ui-gauge",
+        "z": "b438c48279cc0aba",
+        "name": "",
+        "group": "821d5dd782874946",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "color": "#5CD65C",
+                "from": 0
+            },
+            {
+                "color": "#FFC800",
+                "from": 4
+            },
+            {
+                "color": "#EA5353",
+                "from": 7
+            }
+        ],
+        "min": 0,
+        "max": 10,
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 510,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "24f5f1be922dfb3a",
+        "type": "ui-chart",
+        "z": "b438c48279cc0aba",
+        "group": "821d5dd782874946",
+        "name": "",
+        "label": "chart",
+        "order": 3,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": null,
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095FF",
+            "#FF0000",
+            "#FF7F0E",
+            "#2CA02C",
+            "#A347E1",
+            "#D62728",
+            "#FF9896",
+            "#9467BD",
+            "#C5B0D5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 590,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "97786b7414dadbb5",
+        "type": "debug",
+        "z": "b438c48279cc0aba",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 240,
+        "wires": []
+    }
+]
