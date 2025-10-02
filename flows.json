@@ -97,6 +97,68 @@
         "groupType": "default"
     },
     {
+        "id": "406d1f429b621011",
+        "type": "mqtt-broker",
+        "name": "hivemq",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "b25b34e06f821ff7",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
         "id": "7a50d79278c5b6b8",
         "type": "mqtt in",
         "z": "b438c48279cc0aba",
@@ -104,13 +166,13 @@
         "topic": "sensors/room1",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "4b8c527f816f7d99",
+        "broker": "406d1f429b621011",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 140,
-        "y": 180,
+        "x": 160,
+        "y": 200,
         "wires": [
             [
                 "88e3bf8652e22306"
@@ -125,34 +187,13 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 310,
-        "y": 200,
+        "x": 330,
+        "y": 220,
         "wires": [
             [
-                "5507758017af3e07",
-                "97786b7414dadbb5"
-            ]
-        ]
-    },
-    {
-        "id": "5507758017af3e07",
-        "type": "function",
-        "z": "b438c48279cc0aba",
-        "name": "function 1",
-        "func": "// Extrae temperatura y humedad del payload\nvar t = null;\nif (msg.payload.temperature !== undefined) t = Number(msg.payload.temperature);\nelse if (msg.payload.temp !== undefined) t = Number(msg.payload.temp);\n\nvar h = null;\nif (msg.payload.humidity !== undefined) h = Number(msg.payload.humidity);\nelse if (msg.payload.hum !== undefined) h = Number(msg.payload.hum);\n\nvar ts = msg.payload.ts || Date.now();\n\n// Mensajes para los dos outputs: salida 1 -> temperatura, salida 2 -> humedad\nvar m1 = { payload: (t === null ? 0 : t), topic: 'temperatura', ts: ts };\nvar m2 = { payload: (h === null ? 0 : h), topic: 'humedad', ts: ts };\n\nreturn [ m1, m2 ];\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 320,
-        "y": 340,
-        "wires": [
-            [
-                "bd73d1d99c6b9616",
-                "2907de106a2ecc79",
-                "24f5f1be922dfb3a"
+                "97786b7414dadbb5",
+                "08f76e5cbe5ff11c",
+                "8732163ab332df76"
             ]
         ]
     },
@@ -178,30 +219,38 @@
         "suffix": "",
         "segments": [
             {
-                "color": "#5CD65C",
-                "from": 0
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
             },
             {
-                "color": "#FFC800",
-                "from": 4
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
             },
             {
-                "color": "#EA5353",
-                "from": 7
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
             }
         ],
         "min": 0,
-        "max": 10,
+        "max": "50",
         "sizeThickness": 16,
         "sizeGap": 4,
         "sizeKeyThickness": 8,
         "styleRounded": true,
         "styleGlow": false,
         "className": "",
-        "x": 510,
+        "x": 650,
         "y": 180,
         "wires": [
-            []
+            [
+                "24f5f1be922dfb3a"
+            ]
         ]
     },
     {
@@ -226,30 +275,38 @@
         "suffix": "",
         "segments": [
             {
-                "color": "#5CD65C",
-                "from": 0
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
             },
             {
-                "color": "#FFC800",
-                "from": 4
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
             },
             {
-                "color": "#EA5353",
-                "from": 7
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
             }
         ],
         "min": 0,
-        "max": 10,
+        "max": "100",
         "sizeThickness": 16,
         "sizeGap": 4,
         "sizeKeyThickness": 8,
         "styleRounded": true,
         "styleGlow": false,
         "className": "",
-        "x": 510,
+        "x": 630,
         "y": 280,
         "wires": [
-            []
+            [
+                "24f5f1be922dfb3a"
+            ]
         ]
     },
     {
@@ -264,7 +321,7 @@
         "category": "topic",
         "categoryType": "msg",
         "xAxisLabel": "",
-        "xAxisProperty": null,
+        "xAxisProperty": "",
         "xAxisPropertyType": "timestamp",
         "xAxisType": "time",
         "xAxisFormat": "",
@@ -286,15 +343,15 @@
         "removeOlderUnit": "3600",
         "removeOlderPoints": "",
         "colors": [
-            "#0095FF",
-            "#FF0000",
-            "#FF7F0E",
-            "#2CA02C",
-            "#A347E1",
-            "#D62728",
-            "#FF9896",
-            "#9467BD",
-            "#C5B0D5"
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
         ],
         "textColor": [
             "#666666"
@@ -308,8 +365,8 @@
         "height": 8,
         "className": "",
         "interpolation": "linear",
-        "x": 590,
-        "y": 340,
+        "x": 850,
+        "y": 220,
         "wires": [
             []
         ]
@@ -326,8 +383,62 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 640,
-        "y": 240,
+        "x": 540,
+        "y": 220,
         "wires": []
+    },
+    {
+        "id": "08f76e5cbe5ff11c",
+        "type": "change",
+        "z": "b438c48279cc0aba",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temperature",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 100,
+        "wires": [
+            [
+                "bd73d1d99c6b9616"
+            ]
+        ]
+    },
+    {
+        "id": "8732163ab332df76",
+        "type": "change",
+        "z": "b438c48279cc0aba",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.humidity",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 300,
+        "wires": [
+            [
+                "2907de106a2ecc79"
+            ]
+        ]
     }
 ]
