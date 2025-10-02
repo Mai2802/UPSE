@@ -8,10 +8,150 @@
         "env": []
     },
     {
+        "id": "e45b88afa9d7a015",
+        "type": "tab",
+        "label": "Flujo 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "4b8c527f816f7d99",
         "type": "mqtt-broker",
         "name": "Hivemq",
         "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "485f7bc8ae1d06c1",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "2ff61a4c701e27f8",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "30d834d6b02f1c0a",
+        "type": "ui-page",
+        "name": "Page 1",
+        "ui": "485f7bc8ae1d06c1",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "2ff61a4c701e27f8",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "8196756e6768aa24",
+        "type": "ui-group",
+        "name": "Group 1",
+        "page": "30d834d6b02f1c0a",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": true,
+        "disabled": false,
+        "groupType": "default"
+    },
+    {
+        "id": "mqtt-broker",
+        "type": "mqtt-broker",
+        "name": "Local Mosquitto",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true
+    },
+    {
+        "id": "7b7e170a0750694d",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "",
         "port": 1883,
         "clientid": "",
         "autoConnect": true,
@@ -284,5 +424,565 @@
         "x": 480,
         "y": 560,
         "wires": []
+    },
+    {
+        "id": "73f7cfc81aa498d9",
+        "type": "inject",
+        "z": "64677345a031808c",
+        "name": "Temperatura",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "Temperatura",
+        "payload": "25",
+        "payloadType": "num",
+        "x": 170,
+        "y": 820,
+        "wires": [
+            [
+                "5e3d56471a055d97",
+                "d8fceb8822a1123e"
+            ]
+        ]
+    },
+    {
+        "id": "9cbcd6a9fd50ec1a",
+        "type": "inject",
+        "z": "64677345a031808c",
+        "name": "humedad",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "Humedad",
+        "payload": "60",
+        "payloadType": "num",
+        "x": 160,
+        "y": 920,
+        "wires": [
+            [
+                "5e3d56471a055d97",
+                "ccd43c3eb45cb492"
+            ]
+        ]
+    },
+    {
+        "id": "21676b5c5d1e4dd1",
+        "type": "inject",
+        "z": "64677345a031808c",
+        "name": "Estado",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "Estado",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 160,
+        "y": 1020,
+        "wires": [
+            [
+                "5e3d56471a055d97",
+                "c05d31fd9ded9da0"
+            ]
+        ]
+    },
+    {
+        "id": "5e3d56471a055d97",
+        "type": "function",
+        "z": "64677345a031808c",
+        "name": "function 2",
+        "func": "msg.payload = {\n    temperatura: msg.temperatura || msg.payload.temperatura,\n    humedad: msg.humedad || msg.payload.humedad,\n    estado: msg.estado || msg.payload.estado\n};\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 880,
+        "wires": [
+            [
+                "9b2d867f3ea8eaec",
+                "abb6ad35c2f55cdd"
+            ]
+        ]
+    },
+    {
+        "id": "9b2d867f3ea8eaec",
+        "type": "mqtt out",
+        "z": "64677345a031808c",
+        "name": "",
+        "topic": "Mel",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4b8c527f816f7d99",
+        "x": 530,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "d8fceb8822a1123e",
+        "type": "ui-gauge",
+        "z": "64677345a031808c",
+        "name": "",
+        "group": "",
+        "order": 0,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": 10,
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 350,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ccd43c3eb45cb492",
+        "type": "ui-gauge",
+        "z": "64677345a031808c",
+        "name": "",
+        "order": 0,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "color": "#5CD65C",
+                "from": 0
+            },
+            {
+                "color": "#FFC800",
+                "from": 4
+            },
+            {
+                "color": "#EA5353",
+                "from": 7
+            }
+        ],
+        "min": 0,
+        "max": 10,
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 370,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c05d31fd9ded9da0",
+        "type": "ui-text",
+        "z": "64677345a031808c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "Helvetica",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payloads",
+        "valueType": "msg",
+        "x": 370,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "abb6ad35c2f55cdd",
+        "type": "debug",
+        "z": "64677345a031808c",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "293c9dc72e8ba0c0",
+        "type": "inject",
+        "z": "e45b88afa9d7a015",
+        "name": "Temperatura",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "Temperatura",
+        "payload": "25",
+        "payloadType": "num",
+        "x": 190,
+        "y": 180,
+        "wires": [
+            [
+                "cb10f73dd7db9f37",
+                "ad5f4d6ac5bf96fc"
+            ]
+        ]
+    },
+    {
+        "id": "f3dcf9f606b6ed68",
+        "type": "inject",
+        "z": "e45b88afa9d7a015",
+        "name": "humedad",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "Humedad",
+        "payload": "60",
+        "payloadType": "num",
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "b74dcb11482c1647",
+                "ad5f4d6ac5bf96fc"
+            ]
+        ]
+    },
+    {
+        "id": "fa864030a7bc95d8",
+        "type": "inject",
+        "z": "e45b88afa9d7a015",
+        "name": "Estado",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "Estado",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 180,
+        "y": 380,
+        "wires": [
+            [
+                "d7efef1f9213f995",
+                "ad5f4d6ac5bf96fc"
+            ]
+        ]
+    },
+    {
+        "id": "9a19bd3b0c6f7346",
+        "type": "mqtt out",
+        "z": "e45b88afa9d7a015",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4b8c527f816f7d99",
+        "x": 550,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "cb10f73dd7db9f37",
+        "type": "ui-gauge",
+        "z": "e45b88afa9d7a015",
+        "name": "",
+        "group": "",
+        "order": 0,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": 10,
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 370,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b74dcb11482c1647",
+        "type": "ui-gauge",
+        "z": "e45b88afa9d7a015",
+        "name": "",
+        "order": 0,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "color": "#5CD65C",
+                "from": 0
+            },
+            {
+                "color": "#FFC800",
+                "from": 4
+            },
+            {
+                "color": "#EA5353",
+                "from": 7
+            }
+        ],
+        "min": 0,
+        "max": 10,
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 390,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d7efef1f9213f995",
+        "type": "ui-text",
+        "z": "e45b88afa9d7a015",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "Helvetica",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payloads",
+        "valueType": "msg",
+        "x": 390,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "5f169f61cc6d26df",
+        "type": "debug",
+        "z": "e45b88afa9d7a015",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "ea79466387969142",
+        "type": "mqtt in",
+        "z": "e45b88afa9d7a015",
+        "name": "",
+        "topic": "Mel",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "4b8c527f816f7d99",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 60,
+        "wires": [
+            [
+                "cb10f73dd7db9f37",
+                "b74dcb11482c1647",
+                "d7efef1f9213f995",
+                "ad5f4d6ac5bf96fc"
+            ]
+        ]
+    },
+    {
+        "id": "ad5f4d6ac5bf96fc",
+        "type": "json",
+        "z": "e45b88afa9d7a015",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 390,
+        "y": 220,
+        "wires": [
+            [
+                "9a19bd3b0c6f7346",
+                "5f169f61cc6d26df"
+            ]
+        ]
     }
 ]
